@@ -10,6 +10,7 @@ import {
   SidebarGroupLabel,
   SidebarHeader,
   SidebarMenu,
+  SidebarMenuBadge,
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarSeparator,
@@ -64,105 +65,132 @@ const items = [
                 </SidebarMenuItem>
             </SidebarMenu>
         </SidebarHeader>
-        <SidebarSeparator />
-      <SidebarContent>
-   
-      <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {items.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <a href={item.url}>
-                      <item.icon />
-                      <span>{item.title}</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-             <SidebarGroup>
-          <SidebarGroupLabel>Projects</SidebarGroupLabel>
-          <SidebarGroupAction>
-            <Plus /> <span className="sr-only">Add Project</span>
-          </SidebarGroupAction>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              <SidebarMenuItem>
-                <SidebarMenuButton asChild>
-                  <Link href="/#">
-                  <Projector />
-                  See All Projects
-                  </Link>
-                </SidebarMenuButton>
-                      <SidebarMenuButton asChild>
-                  <Link href="/#">
-                  <Plus />
-                  Add Project
-                  </Link>
-                </SidebarMenuButton>
-           
-              </SidebarMenuItem>
-        
-            </SidebarMenu>
-          </SidebarGroupContent>
-      
-        </SidebarGroup>
-        { /* Collapsible */}
-        <Collapsible defaultOpen className="group/collapsible">
+          <SidebarSeparator />
+            <SidebarContent>
               <SidebarGroup>
-          <SidebarGroupLabel asChild>
-          <CollapsibleTrigger>
-          Collapsible Group
-          <ChevronDown className= "ml-auto h-4 w-4 transition-transform group-data-[state=open]/collapsible:rotate-180" />
-          </CollapsibleTrigger>
-          </SidebarGroupLabel>
-          <CollapsibleContent>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              <SidebarMenuItem>
-                <SidebarMenuButton asChild>
-                  <Link href="/#">
-                  <Projector />
-                  See All Projects
-                  </Link>
-                </SidebarMenuButton>
-                      <SidebarMenuButton asChild>
-                  <Link href="/#">
-                  <Plus />
-                  Add Project
-                  </Link>
-                </SidebarMenuButton>
+                <SidebarGroupLabel>Application</SidebarGroupLabel>
+                    <SidebarGroupContent>
+                      <SidebarMenu>
+                           {items.map((item) => (
+                                <SidebarMenuItem key={item.title}>
+                                      <SidebarMenuButton asChild>
+                                            <a href={item.url}>
+                                               <item.icon />
+                                                   <span>{item.title}</span>
+                                            </a>
+                                      </SidebarMenuButton>
+                                              {item.title==="Inbox" && (
+                                                <SidebarMenuBadge>24</SidebarMenuBadge>
+                    )}
+                                </SidebarMenuItem>
+              ))}
+                      </SidebarMenu>
+                    </SidebarGroupContent>
+              </SidebarGroup>
+              <SidebarGroup>
+                <SidebarGroupLabel>Projects</SidebarGroupLabel>
+                    <SidebarGroupAction>
+                        <Plus /> <span className="sr-only">Add Project</span>
+                            </SidebarGroupAction>
+                                <SidebarGroupContent>
+                                  <SidebarMenu>
+                                    <SidebarMenuItem>
+                                      <SidebarMenuButton asChild>
+                                        <Link href="/#">
+                                             <Projector />
+                                                 See All Projects
+                                        </Link>
+                                      </SidebarMenuButton>
+                                      <SidebarMenuButton asChild>
+                                          <Link href="/#">
+                                            <Plus />
+                                              Add Project
+                                                </Link>
+                                      </SidebarMenuButton>
            
-              </SidebarMenuItem>
+                                    </SidebarMenuItem>
+                                  </SidebarMenu>
+                                </SidebarGroupContent>
+      
+              </SidebarGroup>
+        { /* Collapsible */}
+              <Collapsible defaultOpen className="group/collapsible">
+                  <SidebarGroup>
+                    <SidebarGroupLabel asChild>
+                      <CollapsibleTrigger>
+                         Collapsible Group
+                           <ChevronDown className= "ml-auto h-4 w-4 transition-transform group-data-[state=open]/collapsible:rotate-180" />
+                      </CollapsibleTrigger>
+                    </SidebarGroupLabel>
+                      <CollapsibleContent>
+                          <SidebarGroupContent>
+                            <SidebarMenu>
+                              <SidebarMenuItem>
+                                <SidebarMenuButton asChild>
+                                  <Link href="/#">
+                                    <Projector />
+                                       See All Projects
+                                  </Link>
+                                </SidebarMenuButton>
+                                   <SidebarMenuButton asChild>
+                                      <Link href="/#">
+                                         <Plus />
+                                            Add Project
+                                      </Link>
+                                </SidebarMenuButton>
+           
+                              </SidebarMenuItem>
         
-            </SidebarMenu>
-          </SidebarGroupContent>
-         </CollapsibleContent>
-        </SidebarGroup>
-             </Collapsible>
-      </SidebarContent>
-      <SidebarFooter>
-        <SidebarMenu>
-          <SidebarMenuItem>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <SidebarMenuButton>
-                   <User2/> Rohit Kumar <ChevronUp className="ml-auto"/>
-                </SidebarMenuButton>
-              </DropdownMenuTrigger> 
-              <DropdownMenuContent align="end">
-                <DropdownMenuItem>Account</DropdownMenuItem>
-                <DropdownMenuItem>Settings</DropdownMenuItem>
-                <DropdownMenuItem>Sign Out</DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>     
-          </SidebarMenuItem>
-        </SidebarMenu>
-      </SidebarFooter>
+                            </SidebarMenu>
+                          </SidebarGroupContent>
+                      </CollapsibleContent>
+                  </SidebarGroup>
+              </Collapsible>
+                { /* NESTED */}
+                       <SidebarGroup>
+                    <SidebarGroupLabel>Nested Items</SidebarGroupLabel>
+                          <SidebarGroupContent>
+                            <SidebarMenu>
+                              <SidebarMenuItem>
+                                <SidebarMenuButton asChild>
+                                  <Link href="/#">
+                                    <Plus />
+                                       See All Projects
+                                  </Link>
+                                </SidebarMenuButton>
+                                   <SidebarMenuButton asChild>
+                                      <Link href="/#">
+                                         <Plus />
+                                            Add Project
+                                      </Link>
+                                </SidebarMenuButton>
+           
+                              </SidebarMenuItem>
+        
+                            </SidebarMenu>
+                          </SidebarGroupContent>
+                  </SidebarGroup>
+                
+                  
+            </SidebarContent>
+        <SidebarFooter>
+          <SidebarMenu>
+            <SidebarMenuItem>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <SidebarMenuButton>
+                    <User2/> Rohit Kumar <ChevronUp className="ml-auto"/>
+                      </SidebarMenuButton>
+                        </DropdownMenuTrigger> 
+                          <DropdownMenuContent align="end">
+                            <DropdownMenuItem>Account</DropdownMenuItem>
+                              <DropdownMenuItem>Settings</DropdownMenuItem>
+                            <DropdownMenuItem>Sign Out</DropdownMenuItem>
+                          </DropdownMenuContent>
+              </DropdownMenu>     
+            </SidebarMenuItem>
+          </SidebarMenu>
+        </SidebarFooter>
     </Sidebar>
   )
 }
