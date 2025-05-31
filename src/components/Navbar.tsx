@@ -19,11 +19,13 @@ import { SidebarTrigger } from "./ui/sidebar"
 
 const Navbar = () => {
     const { setTheme } = useTheme()
+    // const {toggleSidebar} = useSidebar()
     
     return (
         <nav className="p-4 flex items-center justify-between">
             { /* LEFT  */}
             <SidebarTrigger />
+            {/* <Button variant="outline" onClick={toggleSidebar}>Custom Button</Button> */}
 
             { /* RIGHT */}
             <div className="flex items-center gap-4">

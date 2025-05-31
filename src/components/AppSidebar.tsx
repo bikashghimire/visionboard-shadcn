@@ -1,10 +1,11 @@
-import { Calendar, ChevronUp, Home, Inbox, Search, Settings, User2 } from "lucide-react"
+import { Calendar, ChevronDown, ChevronUp, Home, Inbox, Plus, Projector, Search, Settings, User2 } from "lucide-react"
 
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
   SidebarGroup,
+  SidebarGroupAction,
   SidebarGroupContent,
   SidebarGroupLabel,
   SidebarHeader,
@@ -17,6 +18,7 @@ import {
 import Image from "next/image"
 import Link from "next/link"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@radix-ui/react-collapsible"
 
 // Menu items.
 const items = [
@@ -50,7 +52,7 @@ const items = [
  const AppSidebar = () => {
   return (
     <Sidebar collapsible="icon">
-        <SidebarHeader>
+        <SidebarHeader className="py-4">
             <SidebarMenu>
                 <SidebarMenuItem>
                     <SidebarMenuButton asChild>
@@ -64,7 +66,8 @@ const items = [
         </SidebarHeader>
         <SidebarSeparator />
       <SidebarContent>
-        <SidebarGroup>
+   
+      <SidebarGroup>
           <SidebarGroupLabel>Application</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
@@ -81,6 +84,66 @@ const items = [
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
+             <SidebarGroup>
+          <SidebarGroupLabel>Projects</SidebarGroupLabel>
+          <SidebarGroupAction>
+            <Plus /> <span className="sr-only">Add Project</span>
+          </SidebarGroupAction>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <Link href="/#">
+                  <Projector />
+                  See All Projects
+                  </Link>
+                </SidebarMenuButton>
+                      <SidebarMenuButton asChild>
+                  <Link href="/#">
+                  <Plus />
+                  Add Project
+                  </Link>
+                </SidebarMenuButton>
+           
+              </SidebarMenuItem>
+        
+            </SidebarMenu>
+          </SidebarGroupContent>
+      
+        </SidebarGroup>
+        { /* Collapsible */}
+        <Collapsible defaultOpen className="group/collapsible">
+              <SidebarGroup>
+          <SidebarGroupLabel asChild>
+          <CollapsibleTrigger>
+          Collapsible Group
+          <ChevronDown className= "ml-auto h-4 w-4 transition-transform group-data-[state=open]/collapsible:rotate-180" />
+          </CollapsibleTrigger>
+          </SidebarGroupLabel>
+          <CollapsibleContent>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <Link href="/#">
+                  <Projector />
+                  See All Projects
+                  </Link>
+                </SidebarMenuButton>
+                      <SidebarMenuButton asChild>
+                  <Link href="/#">
+                  <Plus />
+                  Add Project
+                  </Link>
+                </SidebarMenuButton>
+           
+              </SidebarMenuItem>
+        
+            </SidebarMenu>
+          </SidebarGroupContent>
+         </CollapsibleContent>
+        </SidebarGroup>
+             </Collapsible>
       </SidebarContent>
       <SidebarFooter>
         <SidebarMenu>
