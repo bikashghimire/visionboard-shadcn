@@ -1,8 +1,11 @@
 import CardList from "@/components/CardList";
+import EditUser from "@/components/EditUser";
 import { Badge } from "@/components/ui/badge";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
+import { Button } from "@/components/ui/button";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 import { Progress } from "@/components/ui/progress";
+import { Sheet, SheetTrigger } from "@/components/ui/sheet";
 import { BadgeCheck, Candy, Shield } from "lucide-react";
 import Link from "next/link";
 
@@ -76,7 +79,15 @@ const Page = () => {
                 </div>
                  {/* INFORMATION CONTAINER */}
                 <div className="bg-primary-foreground p-4 rounded-lg">
-                    <h1 className="text-xl font-semibold">User Information</h1>
+                    <div className="flex items-center justify-between">
+                        <h1 className="text-xl font-semibold">User Information</h1>
+                        <Sheet>
+                            <SheetTrigger asChild>
+                           <Button>Edit Users</Button>
+                           </SheetTrigger>
+                        <EditUser />
+                            </Sheet>
+                    </div>
                     <div className="space-y-4 mt-4">
                         <div className="flex flex-col gap-2 mb-8">
                             <p className="text-sm text-muted-foreground">Profile Completion</p>
@@ -103,6 +114,7 @@ const Page = () => {
                             <Badge>Admin</Badge>
                         </div>
                     </div>
+                    
                     <p className="text-sm text-muted-foreground mt-4">Joined on 2025.01.20</p>
                 </div>
                  {/* CARD LIST CONTAINER */}
