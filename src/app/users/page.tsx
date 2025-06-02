@@ -1,3 +1,4 @@
+import AppLineChart from "@/components/AppLineChart";
 import CardList from "@/components/CardList";
 import EditUser from "@/components/EditUser";
 import { Badge } from "@/components/ui/badge";
@@ -6,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 import { Progress } from "@/components/ui/progress";
 import { Sheet, SheetTrigger } from "@/components/ui/sheet";
+import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import { BadgeCheck, Candy, Shield } from "lucide-react";
 import Link from "next/link";
 
@@ -122,13 +124,26 @@ const Page = () => {
                     <CardList title="Recent Transactions" />
                 </div>
 
+
                 </div>
                     {/* Right Side */}
                 <div className="w-full xl:w-2/3 space-y-6">
                 {/* USER CARD CONTAINER */}
-                    <div className="bg-primary-foreground p-4 rounded-lg">User Card</div>
+                    <div className="bg-primary-foreground p-4 rounded-lg space-y-2">
+                        <div className="flex items-center gap-2">
+                            <Avatar className="size-12">
+                                <AvatarImage src="https://avatars.githubusercontent.com/bikashghimire" />
+                                <AvatarFallback>BG</AvatarFallback>
+                            </Avatar>
+                                <h1 className="text-xl font-semibold">Roham Sheths</h1>
+                        </div>
+                        <p className="text-sm text-muted-foreground">Lorem ipsum dolor sit amet consectetur adipisicing elit. A officia sequi eius quod corrupti fugiat, ut ullam, illo sint eaque soluta laborum consequatur sed iure suscipit consequuntur possimus expedita libero.</p>
+                    </div>
                                 {/* CHART CONTAINER */}
-                    <div className="bg-primary-foreground p-4 rounded-lg">Chart</div>
+                    <div className="bg-primary-foreground p-4 rounded-lg">
+                        <h1 className="text-xl font-semibold">User Activity</h1>
+                        <AppLineChart />
+                    </div>
 
                 </div>
 

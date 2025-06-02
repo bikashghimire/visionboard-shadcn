@@ -47,7 +47,7 @@ const EditUser = () => {
       <SheetContent>
         <SheetHeader>
         <SheetTitle className="mb-4">Edit User</SheetTitle>
-        <SheetDescription>
+        <SheetDescription asChild>
             <Form  {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                         <FormField
@@ -121,7 +121,9 @@ const EditUser = () => {
                             <FormItem>
                             <FormLabel>Role</FormLabel>
                             <FormControl>
-                               <Select>
+                               <Select    value={field.value}
+                                 onValueChange={field.onChange}
+                                 defaultValue={field.value}>
                                 <SelectTrigger>
                                     <SelectValue placeholder="Role" />
                                 </SelectTrigger>
